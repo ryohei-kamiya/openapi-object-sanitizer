@@ -1,0 +1,18 @@
+[tool.poetry]
+name = "openapi-object-sanitizer"
+version = "0.1.0"
+description = "OpenAPI Object Sanitizer is used to sanitize an object to match the schema definition of the OpenAPI specification."
+license = "MIT"
+authors = ["Ryohei Kamiya <contact@ww-auto.net>"]
+readme = "README.md"
+packages = [{include = "openapi_object_sanitizer"}]
+
+[tool.poetry.dependencies]
+python = "^3.7"
+openapi-core = "^0.17.1"
+openapi-schema-validator = "^0.4.4"
+jsonschema = "^4.17.3"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

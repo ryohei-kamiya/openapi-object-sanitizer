@@ -1,0 +1,134 @@
+openapi: '3.0.3'
+info:
+  title: 'Example of Open API Specification'
+  version: '1.0'
+servers:
+  - url: https://example.com
+paths:
+  /example01:
+    get:
+      description: Get the list of example01.
+      parameters:
+        - $ref: '#/components/parameters/offset'
+        - $ref: '#/components/parameters/limit'
+      responses:
+        '200':
+          description: The list of example01.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Example01'
+  /example02:
+    get:
+      description: Get the list of example02.
+      parameters:
+        - $ref: '#/components/parameters/offset'
+        - $ref: '#/components/parameters/limit'
+      responses:
+        '200':
+          description: The list of example02.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Example02'
+  /example03:
+    get:
+      description: Get the list of example03.
+      parameters:
+        - $ref: '#/components/parameters/offset'
+        - $ref: '#/components/parameters/limit'
+      responses:
+        '200':
+          description: The list of example03.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Example03'
+  /example04:
+    get:
+      description: Get the list of example04.
+      parameters:
+        - $ref: '#/components/parameters/offset'
+        - $ref: '#/components/parameters/limit'
+      responses:
+        '200':
+          description: The list of example04.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Example04'
+components:
+  parameters:
+    offset:
+      name: offset
+      in: query
+      schema:
+        type: integer
+        minimum: 0
+        maximum: 10000
+    limit:
+      name: limit
+      in: query
+      schema:
+        type: integer
+        minimum: 0
+        maximum: 100
+  schemas:
+    Example01:
+      type: object
+      properties:
+        integer:
+          type: integer
+          minimum: 0
+          maximum: 100
+        number:
+          type: number
+          minimum: 0
+          maximum: 100
+        string:
+          type: string
+    Example02:
+      type: object
+      properties:
+        integer_with_default:
+          type: integer
+          minimum: 0
+          maximum: 100
+          default: 0
+        number_with_default:
+          type: number
+          minimum: 0
+          maximum: 100
+          default: 0
+        string_with_default:
+          type: string
+          default: "abc"
+    Example03:
+      type: object
+      properties:
+        date_string:
+          type: string
+        datetime_string:
+          type: string
+        datetime_number:
+          type: number
+        datetime_integer:
+          type: integer
+    Example04:
+      type: object
+      properties:
+        string_pattern:
+          type: string
+          pattern: ^[0-9]{4}$
+        string_pattern_with_default:
+          type: string
+          pattern: ^[0-9]{4}$
+          default: "0000"

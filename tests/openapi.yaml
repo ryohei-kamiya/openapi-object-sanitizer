@@ -1,0 +1,178 @@
+openapi: '3.0.3'
+info:
+  title: 'Example of Open API Specification'
+  version: '1.0'
+servers:
+  - url: https://example.com
+paths:
+  /dummies:
+    get:
+      description: Get the dummies.
+      parameters:
+        - $ref: '#/components/parameters/offset'
+        - $ref: '#/components/parameters/limit'
+      responses:
+        '200':
+          description: The list of dummy.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Dummy'
+components:
+  schemas:
+    Integer:
+      type: integer
+      minimum: 0
+      maximum: 100
+    Number:
+      type: number
+      minimum: 0
+      maximum: 100
+    String:
+      type: string
+    Dummy:
+      type: object
+      required:
+        - RequiredInteger
+        - RequiredNumber
+        - RequiredString
+        - RequiredIntegerWithDefault
+        - RequiredNumberWithDefault
+        - RequiredStringWithDefault
+        - RequiredNullableInteger
+        - RequiredNullableNumber
+        - RequiredNullableString
+        - RequiredNullableIntegerWithDefault
+        - RequiredNullableNumberWithDefault
+        - RequiredNullableStringWithDefault
+      properties:
+        Integer:
+          $ref: "#/components/schemas/Integer"
+        Number:
+          $ref: "#/components/schemas/Number"
+        String:
+          $ref: "#/components/schemas/String"
+        IntegerWithDefault:
+          type: integer
+          minimum: 0
+          maximum: 100
+          default: 0
+        NumberWithDefault:
+          type: number
+          minimum: 0
+          maximum: 100
+          default: 0
+        StringWithDefault:
+          type: string
+          default: ""
+        NullableInteger:
+          type: integer
+          minimum: 0
+          maximum: 100
+          nullable: true
+        NullableNumber:
+          type: number
+          minimum: 0
+          maximum: 100
+          nullable: true
+        NullableString:
+          type: string
+          nullable: true
+        NullableIntegerWithDefault:
+          type: integer
+          minimum: 0
+          maximum: 100
+          default: 0
+          nullable: true
+        NullableNumberWithDefault:
+          type: number
+          minimum: 0
+          maximum: 100
+          default: 0
+          nullable: true
+        NullableStringWithDefault:
+          type: string
+          default: ""
+          nullable: true
+        RequiredInteger:
+          type: integer
+          minimum: 0
+          maximum: 100
+        RequiredNumber:
+          type: number
+          minimum: 0
+          maximum: 100
+        RequiredString:
+          type: string
+        RequiredIntegerWithDefault:
+          type: integer
+          minimum: 0
+          maximum: 100
+          default: 0
+        RequiredNumberWithDefault:
+          type: number
+          minimum: 0
+          maximum: 100
+          default: 0
+        RequiredStringWithDefault:
+          type: string
+          default: ""
+        RequiredNullableInteger:
+          type: integer
+          minimum: 0
+          maximum: 100
+          nullable: true
+        RequiredNullableNumber:
+          type: number
+          minimum: 0
+          maximum: 100
+          nullable: true
+        RequiredNullableString:
+          type: string
+          nullable: true
+        RequiredNullableIntegerWithDefault:
+          type: integer
+          minimum: 0
+          maximum: 100
+          default: 0
+          nullable: true
+        RequiredNullableNumberWithDefault:
+          type: number
+          minimum: 0
+          maximum: 100
+          default: 0
+          nullable: true
+        RequiredNullableStringWithDefault:
+          type: string
+          default: ""
+          nullable: true
+        DateString:
+          type: string
+        DatetimeString:
+          type: string
+        DatetimeNumber:
+          type: number
+        DatetimeInteger:
+          type: integer
+        StringPattern:
+          type: string
+          pattern: ^[0-9]{4}$
+        StringPatternWithDefault:
+          type: string
+          pattern: ^[0-9]{4}$
+          default: "0000"
+  parameters:
+    offset:
+      name: offset
+      in: query
+      schema:
+        type: integer
+        minimum: 0
+        maximum: 10000
+    limit:
+      name: limit
+      in: query
+      schema:
+        $ref: "#/components/schemas/Integer"
